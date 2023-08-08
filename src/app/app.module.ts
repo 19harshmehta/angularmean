@@ -11,12 +11,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
 import { HttpClientModule } from "@angular/common/http";
+import { HomeComponent } from './home/home.component';
+import { ListusersComponent } from './listusers/listusers.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent,
+    ListusersComponent
   ],
   imports: [
     BrowserModule,

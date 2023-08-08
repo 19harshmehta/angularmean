@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 
@@ -15,7 +16,7 @@ export class LoginComponent
   password : String=""
   data : any = {}
   
-  constructor(private toastr:ToastrService,private httpClient:HttpClient)
+  constructor(private toastr:ToastrService,private httpClient:HttpClient , private router:Router)
   {
 
   
@@ -35,6 +36,7 @@ export class LoginComponent
         this.toastr.error(this.data.msg,"",{timeOut:3000})
       }else if(this.data.rcode == 200){
         this.toastr.success("Login done","",{timeOut:3000})
+        this.router.navigateByUrl("/home")
       }
       },err=>{
   
