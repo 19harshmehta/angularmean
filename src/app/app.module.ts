@@ -14,13 +14,20 @@ import { HttpClientModule } from "@angular/common/http";
 import { HomeComponent } from './home/home.component';
 import { ListusersComponent } from './listusers/listusers.component';
 
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
+import { EdituserComponent } from './edituser/edituser.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     LoginComponent,
     HomeComponent,
-    ListusersComponent
+    ListusersComponent,
+    EdituserComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +35,9 @@ import { ListusersComponent } from './listusers/listusers.component';
     FormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
-    HttpClientModule
+    HttpClientModule,
+    DialogModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

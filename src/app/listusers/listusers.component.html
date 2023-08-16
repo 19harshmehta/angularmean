@@ -8,8 +8,8 @@
                     <tr>
                         <th>UserId</th>
                         <th>FirstName</th>
-                        <th>Email</th>
-                        <th>Password</th>
+                        <th>Email</th>        
+                        <th>Action</th>
 
                     </tr>
 
@@ -20,10 +20,40 @@
                             <td>{{user._id}}</td>
                             <td>{{user.firstName}}</td>
                             <td>{{user.email}}</td>
-                            <td>{{user.password}}</td>
+                            <td>
+                                <p-button  styleClass="p-button-rounded p-button-primary p-button-sm " (click)="editUser(user._id)" >Edit</p-button>&nbsp; |
+                                <p-button  styleClass="p-button-rounded p-button-danger p-button-sm " (click)="deleteUser(user._id)" >Delete</p-button>&nbsp; |
+                                <p-button  styleClass="p-button-rounded p-button-secondary p-button-sm " (click)="showDialog(user._id)" >View</p-button>
+                                
+                            </td>
                         </tr>
                 </tbody>
             </table> 
     </div>
  </div>
+ 
+ <p-dialog header="Data Retrived" [(visible)]="visible" [breakpoints]="{ '960px': '75vw' }" [style]="{ width: '50vw' } " [draggable]="false" [resizable]="false" position="top">
+     
+            <table>
+                <tr>
+                    <td>Id : </td>
+                    <td>{{uId}}</td>
+                </tr>
+                <tr>
+                    <td>Name : </td>
+                    <td>{{firstName}}</td>
+                </tr>
 
+                <tr>
+                    <td>Email : </td>
+                    <td>{{email}}</td>
+                </tr>
+
+                <tr>
+                    <td>Password : </td>
+                    <td>{{password}}</td>
+                </tr>
+
+            </table>
+        
+    </p-dialog>
