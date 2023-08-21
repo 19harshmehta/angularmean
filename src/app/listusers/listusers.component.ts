@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-listusers',
@@ -19,7 +19,7 @@ export class ListusersComponent {
       password:string=""
       uId:string=""
 
-      constructor(private httpClient:HttpClient, private toastr:ToastrService, private router:Router)
+      constructor(private userService:UserService, private toastr:ToastrService, private router:Router)
       {
         this.getAllUsers()
       }
@@ -28,7 +28,7 @@ export class ListusersComponent {
       {
         console.log("List User Api Called");
 
-        this.httpClient.get("https://demopass.onrender.com/getallusers").subscribe(resp=>{
+        this.userService.getAllUsers().subscribe(resp=>{
           this.apiResponce = resp 
         
           this.users=this.apiResponce.data 
@@ -41,7 +41,7 @@ export class ListusersComponent {
       deleteUser(userId:string)
       {
         //alert("delete"+userId);
-        this.httpClient.delete("https://demopass.onrender.com/deleteuser/"+userId).subscribe(resp=>{
+        this.userService.deleteUser(userId).subscribe(resp=>{
           this.getAllUsers();
         this.toastr.success("","User Removed",{timeOut:3000})
         })
@@ -49,7 +49,7 @@ export class ListusersComponent {
 
       viewUser(userId:string)
       {
-        this.httpClient.get("https://demopass.onrender.com/getuserbyid/"+userId).subscribe(resp=>{
+        this.userService.viewUser(userId).subscribe(resp=>{
         //this.getAllUsers();
          
         // alert(this.users)
@@ -58,7 +58,7 @@ export class ListusersComponent {
       }
 
       showDialog(userId:string){
-        this.httpClient.get("https://demopass.onrender.com/getuserbyid/"+userId).subscribe(resp=>{
+        this.userService.showDialog(userId).subscribe(resp=>{
         
         this.apiResponce = resp 
 
